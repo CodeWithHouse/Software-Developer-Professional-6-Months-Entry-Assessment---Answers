@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Addition Calculator</title> 
+    <script type="text/javascript"> //Answer for Q6 starts here//
+        function add(){
+            // Retrieve values from input fields
+            const num1 = document.querySelector("#num1").value;
+            const num2 = document.querySelector("#num2").value;
+
+            // Validate inputs
+            if(isNaN(num1) || isNaN(num2) || num1 === '' || num2 === '') {
+                alert("Please enter valid numeric values for both inputs.");
+                return;
+            }
+
+            // Convert values to numbers
+            const num1Value = parseFloat(num1);
+            const num2Value = parseFloat(num2);
+
+            // Check for negative values
+            if(num1Value < 0 || num2Value < 0) {
+                alert("Please enter non-negative values for both input fields.");
+                return;
+            }
+
+            // Perform addition
+            const answer = num1Value + num2Value;
+
+            // Display the result
+            document.querySelector("#answer").innerText = answer;
+        }
+    </script>
+</head>
+<body>
+    <!-- 
+        Task 1: Apply type casting to fix this bug inside the add() function.
+
+        Steps to replicate the bug:
+        Step 1 - Enter "100" in Number 1 input
+        Step 2 - Enter "12" in Number 2 input
+        Step 3 - Click Submit button
+        Observe - answer is "10012". It should be "112" instead.
+
+        Task 2: Validate both inputs with the following logic. Use alert() to prompt error message.
+
+        Logic: 
+        - Only accepts numeric value
+        - Numeric value must not be negative
+        - When validation fail, user alert() to prompt user a friendly error message
+
+    -->
+    <form>
+        <input type="number" placeholder="Number 1" id="num1" /> + <input type="number" placeholder="Number 2" id="num2" /> = <span id="answer"></span>
+        <br />
+        <input type="button" value="Submit" onclick="add()" /> 
+    </form>
+</body>
+</html>
